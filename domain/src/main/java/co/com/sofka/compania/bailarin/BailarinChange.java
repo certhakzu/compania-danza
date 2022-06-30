@@ -20,6 +20,7 @@ public class BailarinChange extends EventChange {
             bailarin.claseRealizadas = new HashSet<>();
         });
 
+
         apply((EmailCambiado event) -> {
             String regx = "^(.+)@(.+)$";
             Pattern pattern = Pattern.compile(regx);

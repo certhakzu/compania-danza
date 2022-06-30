@@ -5,6 +5,7 @@ import co.com.sofka.compania.bailarin.values.*;
 import co.com.sofka.compania.clase.values.ClaseId;
 import co.com.sofka.compania.clase.values.FechaDeRealizacion;
 import co.com.sofka.domain.generic.AggregateEvent;
+import co.com.sofka.domain.generic.DomainEvent;
 
 import java.util.List;
 import java.util.Objects;
@@ -24,9 +25,22 @@ public class Bailarin extends AggregateEvent<BailarinId> {
         appendChange(new BailarinCreado(nombre, telefono, email)).apply();
     }
 
+    /**
+     * Cuando el agregado es nuevo
+     */
     private Bailarin(BailarinId entityId){
         super(entityId);
         subscribe(new BailarinChange(this));
+    }
+
+    /**
+     * Cuando quiero construir el Agregado (es decir que ya existe)
+     * Es una factoria
+     */
+    public static Bailarin from(BailarinId bailarinId, List<DomainEvent> events){
+        var bailarin = new Bailarin(bailarinId);
+        events.forEach(bailarin::applyEvent);// como ya debe existir un suscriptor y una lista de eventos, recrea los agregados que ya estan guardados
+        return bailarin;
     }
 
     public void agregarExperiencia(ExperienciaId entityId, Estilo estilo, Lugar lugar, Duracion duracion){
@@ -40,11 +54,6 @@ public class Bailarin extends AggregateEvent<BailarinId> {
     public void eliminarExperiencia(ExperienciaId experienciaId){
         Objects.requireNonNull(experienciaId);
         appendChange(new ExperienciaEliminada(experienciaId)).apply();
-    }
-
-    public void actualizarDuracionDeExperiencia(ExperienciaId experienciaId){
-        Objects.requireNonNull(experienciaId);
-        appendChange(new DuracionDeExperienciaActualizada(experienciaId)).apply();
     }
 
     public void cambiarNombre(Nombre nombre){
@@ -74,14 +83,14 @@ public class Bailarin extends AggregateEvent<BailarinId> {
         appendChange(new ClaseRealizadaEliminada(entityId)).apply();
     }
 
-    public Optional<Experiencia> getExperienciaPorId(ExperienciaId experienciaId){
+    protected Optional<Experiencia> getExperienciaPorId(ExperienciaId experienciaId){
         return experiencias()
                 .stream()
                 .filter(experiencia -> experiencia.identity().equals(experienciaId))
                 .findFirst();
     }
 
-    public Optional<ClaseRealizada> getClaseRealizadaPorId(ClaseRealizadaId claseRealizadaId){
+    protected Optional<ClaseRealizada> getClaseRealizadaPorId(ClaseRealizadaId claseRealizadaId){
         return claseRealizadas()
                 .stream()
                 .filter(claseRealizada -> claseRealizada.identity().equals(claseRealizadaId))
