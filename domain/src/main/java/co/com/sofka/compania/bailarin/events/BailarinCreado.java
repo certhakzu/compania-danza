@@ -13,6 +13,9 @@ public class BailarinCreado extends DomainEvent {
 
     public BailarinCreado(Nombre nombre, Telefono telefono, Email email) {
         super("co.com.sofka.compania.bailarin.bailarincreado");
+        this.nombre = nombre;
+        this.telefono = telefono;
+        this.email = email;
     }
 
     public Nombre getNombre() {
