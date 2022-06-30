@@ -8,7 +8,7 @@ public class EmailCambiado extends DomainEvent {
     private final Email email;
 
     public EmailCambiado(Email email) {
-        super("co.com.sofka.compania.bailarin.telefonocambiado");
+        super("co.com.sofka.compania.bailarin.emailcambiado");
         this.email = email;
     }
 

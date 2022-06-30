@@ -24,6 +24,11 @@ public class Bailarin extends AggregateEvent<BailarinId> {
         appendChange(new BailarinCreado(nombre, telefono, email)).apply();
     }
 
+    private Bailarin(BailarinId entityId){
+        super(entityId);
+        subscribe(new BailarinChange(this));
+    }
+
     public void agregarExperiencia(ExperienciaId entityId, Estilo estilo, Lugar lugar, Duracion duracion){
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(estilo);
@@ -35,6 +40,11 @@ public class Bailarin extends AggregateEvent<BailarinId> {
     public void eliminarExperiencia(ExperienciaId experienciaId){
         Objects.requireNonNull(experienciaId);
         appendChange(new ExperienciaEliminada(experienciaId)).apply();
+    }
+
+    public void actualizarDuracionDeExperiencia(ExperienciaId experienciaId){
+        Objects.requireNonNull(experienciaId);
+        appendChange(new DuracionDeExperienciaActualizada(experienciaId)).apply();
     }
 
     public void cambiarNombre(Nombre nombre){
@@ -68,6 +78,13 @@ public class Bailarin extends AggregateEvent<BailarinId> {
         return experiencias()
                 .stream()
                 .filter(experiencia -> experiencia.identity().equals(experienciaId))
+                .findFirst();
+    }
+
+    public Optional<ClaseRealizada> getClaseRealizadaPorId(ClaseRealizadaId claseRealizadaId){
+        return claseRealizadas()
+                .stream()
+                .filter(claseRealizada -> claseRealizada.identity().equals(claseRealizadaId))
                 .findFirst();
     }
 

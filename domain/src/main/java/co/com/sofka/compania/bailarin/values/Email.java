@@ -3,8 +3,15 @@ package co.com.sofka.compania.bailarin.values;
 import co.com.sofka.domain.generic.ValueObject;
 
 public class Email implements ValueObject {
+
+    private final String email;
+
+    public Email(String email) {
+        this.email = email;
+    }
+
     @Override
-    public Object value() {
-        return null;
+    public String value() {
+        return email;
     }
 }
