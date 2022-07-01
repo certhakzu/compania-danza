@@ -12,6 +12,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Clase extends AggregateEvent<ClaseId> {
@@ -82,7 +83,7 @@ public class Clase extends AggregateEvent<ClaseId> {
     public void cambiarFechaProgramada(FechaProgramadaId entityId, Fecha fecha){
         Objects.requireNonNull(entityId);
         Objects.requireNonNull(fecha);
-        appendChange(entityId, fecha).apply();
+        appendChange(new FechaProgramadaCambiada(entityId, fecha)).apply();
     }
 
     public void cambiarHorasDeClase(HoraDeInicio horaDeInicio, HoraDeFinal horaDeFinal){
@@ -94,6 +95,13 @@ public class Clase extends AggregateEvent<ClaseId> {
     public void actualizarNombre(Nombre nombre){
         Objects.requireNonNull(nombre);
         appendChange(new NombreActualizado(nombre)).apply();
+    }
+
+    protected Optional<Bailarin> getBailarinPorId(BailarinId bailarinId){
+        return bailarines()
+                .stream()
+                .filter(bailarin -> bailarin.identity().equals(bailarinId))
+                .findFirst();
     }
 
     public TipoDeClaseId tipoDeClaseId() {
