@@ -10,7 +10,7 @@ public class HoraDeFinal implements ValueObject<LocalDateTime> {
     private final LocalDateTime value;
 
     public HoraDeFinal(LocalDateTime value) {
-        this.value = value;
+        this.value = Objects.requireNonNull(value);
     }
 
     @Override

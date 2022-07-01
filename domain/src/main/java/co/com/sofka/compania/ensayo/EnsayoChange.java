@@ -19,7 +19,7 @@ public class EnsayoChange extends EventChange {
             ensayo.horaDeInicio = Objects.requireNonNull(event.getHoraDeInicio(), "horaDeInicio no puede ser null");
             ensayo.horaDeFinal = Objects.requireNonNull(event.getHoraDeFinal(), "horaDeFinal no puede ser null");
             ensayo.descripcion = Objects.requireNonNull(event.getDescripcion(), "descripcion no puede ser null");
-            ensayo.fechaDeRealizacion = new FechaDeRealizacion();
+            ensayo.fechaDeRealizacion = new FechaDeRealizacion(value);
         });
 
         apply((BailarinAgregado event) -> {
