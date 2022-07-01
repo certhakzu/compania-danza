@@ -14,6 +14,9 @@ public class Email implements ValueObject {
         if (value.isBlank()){
             throw new IllegalArgumentException("Email no puede venir en Blanco");
         }
+        if (!value.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")){
+            throw new IllegalArgumentException("El Email no es valido");
+        }
     }
 
     @Override
@@ -22,11 +25,11 @@ public class Email implements ValueObject {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        Email that = (Email) obj;
-        return Objects.equals(value, that.value);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Email email = (Email) o;
+        return value.equals(email.value);
     }
 
     @Override

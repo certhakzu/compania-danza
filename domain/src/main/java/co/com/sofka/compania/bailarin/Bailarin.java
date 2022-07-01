@@ -20,6 +20,7 @@ public class Bailarin extends AggregateEvent<BailarinId> {
     protected Set<ClaseRealizada> claseRealizadas;
     protected List<Experiencia> experiencias;
 
+
     public Bailarin(BailarinId entityId, Nombre nombre, Telefono telefono, Email email) {
         super(entityId);
         appendChange(new BailarinCreado(nombre, telefono, email)).apply();

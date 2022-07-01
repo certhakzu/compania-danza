@@ -13,7 +13,7 @@ public class Experiencia extends Entity<ExperienciaId> {
     private Estilo estilo;
     private Lugar lugar;
     private Duracion duracion;
-        public Experiencia(ExperienciaId entityId, Estilo estilo, Lugar lugar, Duracion duracion) {
+    public Experiencia(ExperienciaId entityId, Estilo estilo, Lugar lugar, Duracion duracion) {
         super(entityId);
         this.estilo = estilo;
         this.lugar = lugar;

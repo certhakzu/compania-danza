@@ -1,4 +1,18 @@
 package co.com.sofka.compania.clase.values;
 
-public class Nombre {
+import co.com.sofka.domain.generic.Identity;
+
+public class Nombre extends Identity {
+
+    public Nombre(){
+
+    }
+
+    private Nombre(String id){
+        super(id);
+    }
+
+    public static Nombre of(String id){
+        return new Nombre(id);
+    }
 }
