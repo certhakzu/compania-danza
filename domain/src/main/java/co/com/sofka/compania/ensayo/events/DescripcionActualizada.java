@@ -5,7 +5,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 
 public class DescripcionActualizada extends DomainEvent {
 
-    private Descripcion descripcion;
+    private final Descripcion descripcion;
 
     public DescripcionActualizada(Descripcion descripcion){
         super("co.com.sofka.compania.ensayo.descripcionactualizada");

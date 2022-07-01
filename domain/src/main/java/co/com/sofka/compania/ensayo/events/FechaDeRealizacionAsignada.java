@@ -5,7 +5,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 
 public class FechaDeRealizacionAsignada extends DomainEvent {
 
-    private FechaDeRealizacion fechaDeRealizacion;
+    private final FechaDeRealizacion fechaDeRealizacion;
 
     public FechaDeRealizacionAsignada(FechaDeRealizacion fechaDeRealizacion){
         super("co.com.sofka.compania.ensayo.fechaderealizacionasignada");

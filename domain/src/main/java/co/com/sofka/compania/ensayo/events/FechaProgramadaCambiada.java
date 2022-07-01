@@ -5,7 +5,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 
 public class FechaProgramadaCambiada extends DomainEvent {
 
-    private FechaProgramadaId fechaProgramadaId;
+    private final FechaProgramadaId fechaProgramadaId;
 
     public FechaProgramadaCambiada(FechaProgramadaId fechaProgramadaId){
         super("co.com.sofka.compania.ensayo.fechaprogramadacambiada");

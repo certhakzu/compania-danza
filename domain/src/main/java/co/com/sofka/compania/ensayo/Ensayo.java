@@ -10,6 +10,7 @@ import co.com.sofka.domain.generic.DomainEvent;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Ensayo extends AggregateEvent<EnsayoId> {
@@ -89,19 +90,40 @@ public class Ensayo extends AggregateEvent<EnsayoId> {
         appendChange(new FechaDeRealizacionAsignada(fechaDeRealizacion)).apply();
     }
 
-    public void actualizarDuracionDeObra(Duracion duracion){
-        Objects.requireNonNull(duracion);
-        appendChange(new DuracionDeObraActualizada(duracion)).apply();
+
+
+    protected Optional<Bailarin> getBailarinPorId(BailarinId bailarinId){
+        return bailarines()
+                .stream()
+                .filter(bailarin -> bailarin.identity().equals(bailarinId))
+                .findFirst();
     }
 
-    public void actualizarMusicaDeObra(Musica musica){
-        Objects.requireNonNull(musica);
-        appendChange(new MusicaDeObraActualizada(musica)).apply();
+    public FechaProgramadaId fechaProgramadaId() {
+        return fechaProgramadaId;
     }
 
-    public void actualizarFechasDeObra(FechaDeRealizacion fechaDeRealizacion, FechaProgramada fechaProgramada){
-        Objects.requireNonNull(fechaDeRealizacion);
-        Objects.requireNonNull(fechaProgramada);
-        appendChange(new FechasDeObraActualizadas(fechaDeRealizacion, fechaProgramadaId));
+    public ObraId obraId() {
+        return obraId;
+    }
+
+    public Set<Bailarin> bailarines() {
+        return bailarines;
+    }
+
+    public HoraDeInicio horaDeInicio() {
+        return horaDeInicio;
+    }
+
+    public HoraDeFinal horaDeFinal() {
+        return horaDeFinal;
+    }
+
+    public Descripcion descripcion() {
+        return descripcion;
+    }
+
+    public FechaDeRealizacion fechaDeRealizacion() {
+        return fechaDeRealizacion;
     }
 }
