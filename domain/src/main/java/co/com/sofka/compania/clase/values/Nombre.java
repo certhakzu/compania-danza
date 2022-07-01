@@ -1,18 +1,33 @@
 package co.com.sofka.compania.clase.values;
 
 import co.com.sofka.domain.generic.Identity;
+import co.com.sofka.domain.generic.ValueObject;
 
-public class Nombre extends Identity {
+import java.util.Objects;
 
-    public Nombre(){
+public class Nombre implements ValueObject<String> {
 
+   private final String value;
+
+    public Nombre(String value) {
+        this.value = value;
     }
 
-    private Nombre(String id){
-        super(id);
+    @Override
+    public String value() {
+        return value;
     }
 
-    public static Nombre of(String id){
-        return new Nombre(id);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Nombre nombre = (Nombre) o;
+        return value.equals(nombre.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }
