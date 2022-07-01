@@ -1,7 +1,6 @@
 package co.com.sofka.compania.clase;
 
 import co.com.sofka.compania.bailarin.Bailarin;
-import co.com.sofka.compania.bailarin.BailarinChange;
 import co.com.sofka.compania.bailarin.values.BailarinId;
 import co.com.sofka.compania.bailarin.values.Email;
 import co.com.sofka.compania.bailarin.values.Telefono;
