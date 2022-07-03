@@ -7,7 +7,7 @@ public class FechaProgramadaId extends Identity {
 
     }
 
-    private FechaProgramadaId(String id){
+    public FechaProgramadaId(String id){
         super(id);
     }
 

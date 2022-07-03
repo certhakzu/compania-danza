@@ -8,7 +8,7 @@ public class BailarinId extends Identity {
 
     }
 
-    private BailarinId(String id){
+    public BailarinId(String id){
         super(id);
     }
 

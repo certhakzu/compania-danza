@@ -10,7 +10,7 @@ public class Descripcion implements ValueObject<String> {
 
     public Descripcion(String value) {
         this.value = Objects.requireNonNull(value);
-        if (value.length() < 20){
+        if (value.length() < 10){
             throw new IllegalArgumentException("Descripcion debe tener mimino 10 caracteres");
         }
     }

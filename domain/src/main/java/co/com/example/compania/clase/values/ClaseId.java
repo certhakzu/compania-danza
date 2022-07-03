@@ -10,7 +10,9 @@ public class ClaseId extends Identity {
 
     }
 
-    private ClaseId(String id){
+
+
+    public ClaseId(String id){
         super(id);
     }
 

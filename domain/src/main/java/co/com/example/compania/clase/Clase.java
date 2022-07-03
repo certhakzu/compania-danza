@@ -25,14 +25,14 @@ public class Clase extends AggregateEvent<ClaseId> {
     protected Set<Bailarin> bailarines;
     protected Bailarin profesor;
 
-    public Clase(ClaseId claseId,
+    public Clase(ClaseId entityId,
                  TipoDeClaseId tipoDeClaseId,
                  FechaProgramadaId fechaProgramadaId,
                  HoraDeInicio horaDeInicio,
                  HoraDeFinal horaDeFinal,
                  Nombre nombre,
                  Bailarin profesor){
-        super(claseId);
+        super(entityId);
         appendChange(new ClaseCreada(tipoDeClaseId, fechaProgramadaId, horaDeInicio, horaDeFinal, nombre, profesor)).apply();
         subscribe(new ClaseChange(this));
     }

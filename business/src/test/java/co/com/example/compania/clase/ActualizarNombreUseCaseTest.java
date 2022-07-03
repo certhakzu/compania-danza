@@ -35,7 +35,7 @@ class ActualizarNombreUseCaseTest {
     DomainEventRepository repository;
 
     @Test
-    public void actualizarNombre(){
+    void actualizarNombre() {
         // arrange
         ClaseId claseId = ClaseId.of("pppppp");
         Nombre nombre = new Nombre("dddd");
@@ -52,23 +52,34 @@ class ActualizarNombreUseCaseTest {
                 .getDomainEvents();
 
         //assert
-        var event = (NombreActualizado)events.get(0);
-        Assertions.assertEquals("dddd", event.getNombre());
-
+        var event = (NombreActualizado) events.get(0);
+        Assertions.assertEquals("dddd", event.getNombre().value());
     }
 
     private List<DomainEvent> history() {
-        return List.of(new ClaseCreada(
-                new TipoDeClaseId(),
-                new FechaProgramadaId(),
-                new HoraDeInicio(LocalDateTime.now()),
-                new HoraDeFinal(LocalDateTime.now()),
-                new Nombre("dddd"),
-                new Bailarin(
-                        new BailarinId(),
-                        new co.com.example.compania.bailarin.values.Nombre("ppp"),
-                        new Telefono("33333"),
-                        new Email("piter@gmail.com")))
+
+        TipoDeClaseId tipoDeClaseId = new TipoDeClaseId("zzz");
+        FechaProgramadaId fechaProgramadaId = new FechaProgramadaId("ccc");
+        Nombre nombre = new Nombre("Contemp");
+        HoraDeInicio horaDeInicio = new HoraDeInicio(LocalDateTime.MIN);
+        HoraDeFinal horaDeFinal = new HoraDeFinal(LocalDateTime.MAX);
+        Bailarin profesor = new Bailarin(
+                new BailarinId("111"),
+                new co.com.example.compania.bailarin.values.Nombre("Alvaro"),
+                new Telefono("1111111"),
+                new Email("alvaro@gmail.com"));
+
+        //Clase clase = new Clase(claseId, tipoDeClaseId, fechaProgramadaId, horaDeInicio, horaDeFinal, nombre, profesor);
+        var event = new ClaseCreada(
+                tipoDeClaseId,
+                fechaProgramadaId,
+                horaDeInicio,
+                horaDeFinal,
+                nombre,
+                profesor
         );
+
+        event.setAggregateRootId("tttt");
+        return List.of(event);
     }
 }
