@@ -20,7 +20,7 @@ public class ClaseCreada extends DomainEvent {
                        HoraDeFinal horaDeFinal,
                        Nombre nombre,
                        Bailarin profesor) {
-        super("co.com.sofka.compania.clase.clasecreada");
+        super("co.com.example.compania.clase.clasecreada");
         this.tipoDeClaseId = tipoDeClaseId;
         this.fechaProgramadaId = fechaProgramadaId;
         this.horaDeInicio = horaDeInicio;

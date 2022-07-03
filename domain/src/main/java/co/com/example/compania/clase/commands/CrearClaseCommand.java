@@ -6,6 +6,7 @@ import co.com.sofka.domain.generic.Command;
 
 public class CrearClaseCommand extends Command {
 
+    private final ClaseId claseId;
     private final TipoDeClaseId tipoDeClaseId;
     private final FechaProgramadaId fechaProgramadaId;
     private final HoraDeInicio horaDeInicio;
@@ -13,18 +14,23 @@ public class CrearClaseCommand extends Command {
     private final Nombre nombre;
     private final Bailarin profesor;
 
-    public CrearClaseCommand(TipoDeClaseId tipoDeClaseId,
+    public CrearClaseCommand(ClaseId claseId, TipoDeClaseId tipoDeClaseId,
                              FechaProgramadaId fechaProgramadaId,
                              HoraDeInicio horaDeInicio,
                              HoraDeFinal horaDeFinal,
                              Nombre nombre,
                              Bailarin profesor) {
+        this.claseId = claseId;
         this.tipoDeClaseId = tipoDeClaseId;
         this.fechaProgramadaId = fechaProgramadaId;
         this.horaDeInicio = horaDeInicio;
         this.horaDeFinal = horaDeFinal;
         this.nombre = nombre;
         this.profesor = profesor;
+    }
+
+    public ClaseId getClaseId() {
+        return claseId;
     }
 
     public TipoDeClaseId getTipoDeClaseId() {

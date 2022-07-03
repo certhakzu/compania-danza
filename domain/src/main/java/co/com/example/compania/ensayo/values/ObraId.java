@@ -8,7 +8,7 @@ public class ObraId extends Identity {
 
     }
 
-    private ObraId(String id){
+    public ObraId(String id){
         super(id);
     }
 

@@ -8,7 +8,7 @@ public class TipoDeClaseId extends Identity {
 
     }
 
-    private TipoDeClaseId(String id){
+    public TipoDeClaseId(String id){
         super(id);
     }
 

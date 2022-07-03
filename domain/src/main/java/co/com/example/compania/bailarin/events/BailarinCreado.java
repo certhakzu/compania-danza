@@ -12,7 +12,7 @@ public class BailarinCreado extends DomainEvent {
     private Email email;
 
     public BailarinCreado(Nombre nombre, Telefono telefono, Email email) {
-        super("co.com.sofka.compania.bailarin.bailarincreado");
+        super("co.com.example.compania.bailarin.bailarincreado");
         this.nombre = nombre;
         this.telefono = telefono;
         this.email = email;
