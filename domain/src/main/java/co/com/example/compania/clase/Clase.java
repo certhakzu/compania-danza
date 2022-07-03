@@ -60,12 +60,13 @@ public class Clase extends AggregateEvent<ClaseId> {
         appendChange(new FechaDeRealizacionAsignada(fechaDeRealizacion)).apply();
     }
 
-    public void agregarBailarin(BailarinId bailarinId, co.com.example.compania.bailarin.values.Nombre nombreBailarin, Telefono telefono, Email email){
+    public void agregarBailarin(ClaseId claseId, BailarinId bailarinId, co.com.example.compania.bailarin.values.Nombre nombreBailarin, Telefono telefono, Email email){
+        Objects.requireNonNull(claseId);
         Objects.requireNonNull(bailarinId);
         Objects.requireNonNull(nombre);
         Objects.requireNonNull(telefono);
         Objects.requireNonNull(email);
-        appendChange(new BailarinAgregado(bailarinId, nombreBailarin, telefono, email)).apply();
+        appendChange(new BailarinAgregado(claseId, bailarinId, nombreBailarin, telefono, email)).apply();
     }
 
     public void eliminarBailarin(BailarinId bailarinId){

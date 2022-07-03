@@ -23,7 +23,7 @@ public class Bailarin extends AggregateEvent<BailarinId> {
 
     public Bailarin(BailarinId entityId, Nombre nombre, Telefono telefono, Email email) {
         super(entityId);
-        appendChange(new BailarinCreado(nombre, telefono, email)).apply();
+        appendChange(new BailarinCreado(entityId, nombre, telefono, email)).apply();
         subscribe(new BailarinChange(this));
     }
 

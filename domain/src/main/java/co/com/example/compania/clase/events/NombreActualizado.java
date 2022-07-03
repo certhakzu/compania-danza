@@ -7,7 +7,7 @@ public class NombreActualizado extends DomainEvent {
     private final Nombre nombre;
 
     public NombreActualizado(Nombre nombre) {
-        super("co.com.sofka.compania.clase.nombreactualizado");
+        super("co.com.example.compania.clase.nombreactualizado");
         this.nombre = nombre;
     }
 

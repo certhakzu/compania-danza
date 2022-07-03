@@ -66,6 +66,7 @@ class AgregarExperienciaUseCaseTest {
     private List<DomainEvent> history() {
 
         return List.of(new BailarinCreado(
+                BailarinId.of("vvv"),
                 new Nombre("patrocia"),
                 new Telefono("7777777"),
                 new Email("valor@gmail.com")

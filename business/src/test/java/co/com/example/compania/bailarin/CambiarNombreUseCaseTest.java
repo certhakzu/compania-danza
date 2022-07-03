@@ -62,6 +62,7 @@ class CambiarNombreUseCaseTest {
         Email emailBailarin = new Email("bailarin@gmail.com");
 
         var event = new BailarinCreado(
+                bailarinId,
                 nombreBailarin,
                 telefonoBailarin,
                 emailBailarin
